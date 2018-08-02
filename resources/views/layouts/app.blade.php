@@ -43,7 +43,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check())
-                            <li class="{{ url('/home') == request()->url() ? 'active' : '' }}"><a class="nav-link" href="{{ url('/home') }}">Dashboard</a></li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">Home</a>
                             </li>
