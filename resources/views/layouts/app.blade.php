@@ -45,10 +45,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">Home</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/settings/profile') }}">Profile</a>
+                            </li>
                             @role('admin')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('authors.index') }}">Penulis</a>                                
                                 <li><a class="nav-link" href="{{ route('books.index') }}">Buku</a></li>
+                                <li><a class="nav-link" href="{{ route('members.index') }}">Member</a></li>
+                                <li><a class="nav-link" href="{{ route('statistics.index') }}">Peminjaman</a></li>
                             </li>                            
                             @endrole
                         @endif
@@ -68,19 +73,21 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                </a>                                
+                                                                    
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">                                    
+                                    <a class="dropdown-item" href="{{ url('/settings/password') }}"><i class="fa fa-btn fa-lock"></i> Ubah Password</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
-                                    </form>
-                                </div>
+                                    </form>                                    
+                                    
+                                </div>                                
                             </li>
                         @endguest
                     </ul>

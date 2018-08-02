@@ -8,6 +8,8 @@ use Laratrust\Traits\LaratrustUserTrait;
 use App\Book;
 use App\BorrowLog;
 use App\Exceptions\BookException;
+use Illuminate\Support\Facades\Mail;
+
 
 class User extends Authenticatable
 {
@@ -52,6 +54,37 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\BorrowLog');
     }
+    protected $casts = [
+        'is_verified' => 'boolean',
+    ];
 
+    public function generateVerificationToken()
+    {
+        $token = $this->verification_token;
+        
+        if (!$token) {
+            $token = str_random(40);
+            $this->verification_token = $token;
+            $this->save();
+        }
+        return $token;
+    }
 
+    public function verify()
+    {
+        $this->is_verified = 1;
+        $this->verification_token = null;
+        $this->save();
+    }
+
+    public function sendVerification(){
+        $token = $this->generateVerificationToken();
+        $user = $this;
+        // $token = str_random(40);
+        // $user->verification_token = $token;
+        // $user->save();
+        Mail::send('auth.emails.verification', compact('user', 'token'), function ($m) use ($user) {
+            $m->to($user->email, $user->name)->subject('Verifikasi Akun Larapus');
+        });
+    }
 }

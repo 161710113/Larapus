@@ -15,6 +15,8 @@ class AddVerificationToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->string('verification_token')->nullable();
+            $table->boolean('is_verified')->default(0);
         });
     }
 
@@ -27,6 +29,8 @@ class AddVerificationToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('verification_token');
+            $table->dropColumn('is_verified');
         });
     }
 }
