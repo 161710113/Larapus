@@ -31,7 +31,7 @@
         {{--  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">  --}}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                
