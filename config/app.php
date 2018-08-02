@@ -166,6 +166,10 @@ return [
         Yajra\DataTables\HtmlServiceProvider::class,
         // Add ReCaptcha
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        // Add Excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        // Add PDF
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -220,8 +224,10 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
-
-
+        // Add Excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        // Add PDF
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
 
         

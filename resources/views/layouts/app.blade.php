@@ -24,6 +24,7 @@
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/selectize.css') }}" rel="stylesheet">
     <link href="{{ asset('css/selectize.bootstrap3.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/print.css') }}" type="text/css" media="print">
 </head>
 <body>
     <div id="app">
@@ -42,6 +43,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check())
+                            <li class="{{ url('/home') == request()->url() ? 'active' : '' }}"><a class="nav-link" href="{{ url('/home') }}">Dashboard</a></li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/') }}">Home</a>
                             </li>
