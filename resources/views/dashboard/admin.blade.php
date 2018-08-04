@@ -28,7 +28,13 @@
         datasets: [{
             label: 'Jumlah buku',
             data: {!! json_encode($books) !!},
-            backgroundColor: "rgba(151,187,205,0.5)",
+            backgroundColor: [
+                "#ff6384",
+                "#6268ff",
+                "#6fff61",
+                "#ffff61",
+                "#f242ff"
+            ],
             borderColor: "rgba(151,187,205,0.8)",
         }]
     };
@@ -44,7 +50,7 @@
     };
     var ctx = document.getElementById("chartPenulis").getContext("2d");
     var authorChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'polarArea',
         data: data,
         options: options});
 </script>

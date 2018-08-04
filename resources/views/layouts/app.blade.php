@@ -44,17 +44,23 @@
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/') }}">Home</a>
+                                {!! Html::smartNav(url('/'), 'Home') !!}
+                                {{--  <a class="nav-link" href="{{ url('/') }}">Home</a>  --}}
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/settings/profile') }}">Profile</a>
+                                {{--  <a class="nav-link" href="{{ url('/settings/profile') }}">Profile</a>  --}}
+                                {!! Html::smartNav(url('/settings/profile'), 'Profile') !!}
                             </li>
                             @role('admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('authors.index') }}">Penulis</a>                                
+                                {{--  <a class="nav-link" href="{{ route('authors.index') }}">Penulis</a>                                
                                 <li><a class="nav-link" href="{{ route('books.index') }}">Buku</a></li>
                                 <li><a class="nav-link" href="{{ route('members.index') }}">Member</a></li>
-                                <li><a class="nav-link" href="{{ route('statistics.index') }}">Peminjaman</a></li>
+                                <li><a class="nav-link" href="{{ route('statistics.index') }}">Peminjaman</a></li>  --}}
+                                {!! Html::smartNav(route('authors.index'), 'Penulis') !!}
+                                {!! Html::smartNav(route('books.index'), 'Buku') !!}
+                                {!! Html::smartNav(route('members.index'), 'Member') !!}
+                                {!! Html::smartNav(route('statistics.index'), 'Peminjaman') !!}
                             </li>                            
                             @endrole
                         @endif

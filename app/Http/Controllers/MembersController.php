@@ -29,7 +29,7 @@ class MembersController extends Controller
             return Datatables::of($members)
             ->addColumn('name', function($member) {
                 return '<a href="'.route('members.show', $member->id).'">'.$member->name.'</a>';
-                })                
+                })                              
             ->addColumn('action', function($member){
                 return view('datatable._action', [
                     'model' => $member,
